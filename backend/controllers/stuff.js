@@ -22,8 +22,6 @@ exports.createbook = (req, res, next) => {
   );
 };
 
-nouve
-
 exports.getOnebook = (req, res, next) => {
   book.findOne({
     _id: req.params.id
