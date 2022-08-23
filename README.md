@@ -3,7 +3,7 @@
 ## PORT USED
 - http://localhost:3000/
 
-## POSTMAN SCREEN
+## MONGO SCREEN
 ![photoMongo](mongo.png)
 
 
