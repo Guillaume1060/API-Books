@@ -4,8 +4,8 @@
 - http://localhost:3000/
 
 ## MONGO SCREEN
-![photoMongo](mongo.png)
+![photoMongo](/images/mongo.png)
 
 
 ## POSTMAN SCREEN
-![photoPostman](postman.png)
+![photoPostman](/images/postman.png)
