@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
 const stuffRoutes = require ('./routes/stuff');
 
 const app = express();
@@ -12,6 +11,11 @@ mongoose.connect('mongodb+srv://guillaume_1060:Becode@cluster0.odgiacl.mongodb.n
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 app.use(express.json());
+app.use(express.static('public'));
+
+app.get('/fichier/html',(req,res) =>{
+    res.sendFile('views/page.html')
+});
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -21,6 +25,8 @@ app.use((req, res, next) => {
 });
 
 app.use('',stuffRoutes);
+
+
 
 
 module.exports = app;
