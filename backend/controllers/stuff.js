@@ -23,9 +23,8 @@ exports.createbook = (req, res, next) => {
 };
 
 exports.getOnebook = (req, res, next) => {
-  book.findOne({
-    _id: req.params.id
-  }).then(
+  book.findOne({_id: req.params.id}
+  ).then(
     (book) => {
       res.status(200).json(book);
     }
@@ -46,7 +45,8 @@ exports.modifybook = (req, res, next) => {
     imageLink: req.body.imageLink,
     year: req.body.year,
   });
-  book.updateOne({_id: req.params.id}, book).then(
+  book.updateOne({_id: req.params.id}, book
+  ).then(
     () => {
       res.status(201).json({
         message: 'book updated successfully!'
@@ -78,7 +78,8 @@ exports.deletebook = (req, res, next) => {
 };
 
 exports.getAllStuff = (req, res, next) => {
-  book.find().then(
+  book.find()
+  .then(
     (books) => {
       res.status(200).json(books);
     }

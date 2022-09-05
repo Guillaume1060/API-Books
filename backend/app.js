@@ -1,7 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+
 const stuffRoutes = require ('./routes/stuff');
+const userRoutes = require ('./routes/user');
+
 const mongoDB = process.env.DBurl;
 
 
@@ -16,9 +19,9 @@ mongoose.connect(mongoDB,
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/fichier/html',(req,res) =>{
-    res.sendFile('views/page.html')
-});
+// app.get('/fichier/html',(req,res) =>{
+//     res.sendFile('views/page.html')
+// });
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -28,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use('',stuffRoutes);
+app.use('',userRoutes);
 
 
 
