@@ -1,41 +1,64 @@
 const book = require('../models/book');
 
-exports.createbook = (req, res, next) => {
-  const book = new book({
-    title: req.body.title,
-    author: req.body.author,
-    imageLink: req.body.imageLink,
-    year: req.body.year,
-  });
-  book.save().then(
-    () => {
-      res.status(201).json({
-        message: 'Post saved successfully!'
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-};
 
-exports.getOnebook = (req, res, next) => {
-  book.findOne({_id: req.params.id}
-  ).then(
-    (book) => {
-      res.status(200).json(book);
-    }
-  ).catch(
-    (error) => {
-      res.status(404).json({
-        error: error
-      });
-    }
-  );
-};
+exports.createbookForm = (req, res) => {
+  res.render('addBook', { })
+}
+
+exports.createbook =  async (req, res) => {
+  try {
+  await book.create({
+    title : req.body.title,
+    author : req.body.author,
+    year : req.body.year,
+  })
+  res.redirect('/')
+} catch (err) {
+  res.redirect('/creation')
+}
+}
+
+
+exports.getOnebook = async (req, res) => {
+  try {
+  const idBook = req.params.id;
+  const bouquin = await book.findById (idBook) 
+
+  console.log (bouquin)
+  res.render('book', { bouquin});
+  } catch (err) {
+    console.log (err)
+    res.redirect('/404')
+  }}
+
+exports.deletebook = async (req, res) => {
+    try {
+    const idBook = req.params.id;
+    book.deleteOne(idBook)
+    console.log (idBook)
+    res.redirect('/')
+    } catch (err) {
+      console.log (err)
+      res.redirect('/404')
+    }}
+
+
+// exports.deletebook = (req, res, next) => {
+//     book.deleteOne({_id: req.params.id}).then(
+//       () => {
+//         res.status(200).json({
+//           message: 'Deleted!'
+//         });
+//       }
+//     ).catch(
+//       (error) => {
+//         res.status(400).json({
+//           error: error
+//         });
+//       }
+//     );
+//   };
+
 
 exports.modifybook = (req, res, next) => {
   const book = new book({
@@ -61,33 +84,10 @@ exports.modifybook = (req, res, next) => {
   );
 };
 
-exports.deletebook = (req, res, next) => {
-  book.deleteOne({_id: req.params.id}).then(
-    () => {
-      res.status(200).json({
-        message: 'Deleted!'
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-};
 
-exports.getAllStuff = (req, res, next) => {
-  book.find()
-  .then(
-    (books) => {
-      res.status(200).json(books);
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
+
+exports.getAllBooks = async (req, res) => {
+  const livre = await book.find();
+  res.render('home', { books : livre });
 }
+

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Ma bibliothèque</title>
+    </head>
+    <body>
+        <h1>Voilà la liste des livres disponibles :
+            (or<a href="/creation"> Add a book)</a>
+            <ul>
+                <% books.forEach((book) => { %>
+                    <li>
+                        Title :  <%= book.title %> <br/>
+                        Author : <%= book.author %> <br/>
+                        Year : <%= book.year %> <br/>
+                        <!-- Image : <img src="<%= book.imageLink %> "> -->
+                        <a href="/<%= book._id %> ">More details</a> <br/>
+                        <a href="/delete/<%= book._id %> ">Delete</a> 
+                    </li>                    
+                <%  }) %>
+            </ul>    
+            
+    </body>
+</html>
