@@ -1,19 +1,19 @@
 <html>
     <head>
-        <title>Ma bibliothèque</title>
+        <title>My library</title>
     </head>
     <body>
-        <h1>Voilà la liste des livres disponibles :
-            (or<a href="/creation"> Add a book)</a>
+        <h1>See below all books available :</h1>
+            (<a href="/creation"> Add a book)</a>
+            <!-- -- <a href="/sign">Sign In</a>  -->
             <ul>
                 <% books.forEach((book) => { %>
                     <li>
-                        Title :  <%= book.title %> <br/>
+                        Title :  <%= book.title %> <a href="/delete/<%= book._id %> ">(Delete it)</a> <br/>
                         Author : <%= book.author %> <br/>
-                        Year : <%= book.year %> <br/>
+                        --> <a href="/<%= book._id %> ">See more details</a> <br/>
                         <!-- Image : <img src="<%= book.imageLink %> "> -->
-                        <a href="/<%= book._id %> ">More details</a> <br/>
-                        <a href="/delete/<%= book._id %> ">Delete</a> 
+                        <br/>
                     </li>                    
                 <%  }) %>
             </ul>    

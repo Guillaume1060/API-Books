@@ -1,6 +1,5 @@
 const book = require('../models/book');
 
-
 exports.createbookForm = (req, res) => {
   res.render('addBook', { })
 }
@@ -15,9 +14,7 @@ exports.createbook =  async (req, res) => {
   res.redirect('/')
 } catch (err) {
   res.redirect('/creation')
-}
-}
-
+}}
 
 exports.getOnebook = async (req, res) => {
   try {
@@ -34,31 +31,14 @@ exports.getOnebook = async (req, res) => {
 exports.deletebook = async (req, res) => {
     try {
     const idBook = req.params.id;
-    book.deleteOne(idBook)
+    const bouquin = await book.findById (idBook)
+    bouquin.deleteOne()
     console.log (idBook)
     res.redirect('/')
     } catch (err) {
       console.log (err)
       res.redirect('/404')
     }}
-
-
-// exports.deletebook = (req, res, next) => {
-//     book.deleteOne({_id: req.params.id}).then(
-//       () => {
-//         res.status(200).json({
-//           message: 'Deleted!'
-//         });
-//       }
-//     ).catch(
-//       (error) => {
-//         res.status(400).json({
-//           error: error
-//         });
-//       }
-//     );
-//   };
-
 
 exports.modifybook = (req, res, next) => {
   const book = new book({
@@ -79,10 +59,7 @@ exports.modifybook = (req, res, next) => {
     (error) => {
       res.status(400).json({
         error: error
-      });
-    }
-  );
-};
+      });});};
 
 
 

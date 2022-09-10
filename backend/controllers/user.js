@@ -1,14 +1,15 @@
-const User = require ('../models/user');
 const bcrypt = require('bcrypt');
 const user = require('../models/user');
 const jwt = require('jsonwebtoken');
 
-
+exports.createUserForm = (req, res) => {
+    res.render('sign', { })
+  }
 
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 5)
         .then(hash => {
-            const user = new User({
+            const user = new user({
                 email: req.body.email,
                 password: hash
             });

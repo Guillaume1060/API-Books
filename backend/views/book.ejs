@@ -1,5 +1,12 @@
 <h1> BOOK DETAIL</h1>
 
-<p> Ciao les nazes !</p>
+<h2>
+<%= bouquin.title %> (<%= bouquin.country %> - <%= bouquin.year %>)  <br/>
+ from <%= bouquin.author %><br/>
+</h2>
+<h4>
+Language :   <%= bouquin.language %> <br/>
+Pages :   <%= bouquin.pages %> pages <br/>
+Link :   <a href="<%= bouquin.link %>">Wikipedia</a> <br/>
+</h4>
 
-<%= bouquin %> 
