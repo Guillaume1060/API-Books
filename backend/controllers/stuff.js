@@ -20,9 +20,7 @@ exports.getOnebook = async (req, res) => {
   try {
   const idBook = req.params.id;
   const bouquin = await book.findById (idBook) 
-
-  console.log (bouquin)
-  res.render('book', { bouquin});
+  res.render('book', {bouquin});
   } catch (err) {
     console.log (err)
     res.redirect('/404')
@@ -33,7 +31,6 @@ exports.deletebook = async (req, res) => {
     const idBook = req.params.id;
     const bouquin = await book.findById (idBook)
     bouquin.deleteOne()
-    console.log (idBook)
     res.redirect('/')
     } catch (err) {
       console.log (err)
