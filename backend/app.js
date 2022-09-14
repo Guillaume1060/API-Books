@@ -6,7 +6,7 @@ const path = require ('path');
 
 
 const stuffRoutes = require ('./routes/stuff');
-const userRoutes = require ('./routes/user');
+
 
 const mongoDB = process.env.DBurl;
 const app = express();
@@ -33,6 +33,6 @@ app.use((req, res, next) => {
 });
 
 app.use('',stuffRoutes);
-app.use('',userRoutes);
+
 
 module.exports = app;
