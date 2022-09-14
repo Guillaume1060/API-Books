@@ -1,7 +1,7 @@
 # BOOK LIBRARY API
 
 ## Exercise API NODEJS BACKEND
-BECODE exercise : API creation with NODE JS of a book library
+BECODE exercise : API creation with NODE JS of a book library with basic front.
 
 ## Techs
 - NodeJs
@@ -9,12 +9,13 @@ BECODE exercise : API creation with NODE JS of a book library
 - MongoDB : Database
 - Mongoose : Mongodb Object Modeling
 - Template EJS
+- Heroku
 
 
 # How to use?
 After cloning, Run `NPM` to access the API on http://localhost:3000/
-## PORT USED
-- http://localhost:3000/
+## Deployed on Heroku
+- https://intense-plateau-69568.herokuapp.com/
 
 ## MONGO SCREEN
 ![photoMongo](/images/mongo.png)
@@ -23,5 +24,3 @@ After cloning, Run `NPM` to access the API on http://localhost:3000/
 ## POSTMAN SCREEN
 ![photoPostman](/images/postman.png)
 
-## EJS PAGE SCREEN
-![photoEJS](/images/EJS.png)
